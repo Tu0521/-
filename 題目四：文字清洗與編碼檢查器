@@ -1,0 +1,36 @@
+while True:
+    user_input = input("請輸入一段文字（輸入 STOP 結束）：")
+    
+    # 結束條件
+    if user_input == "STOP":
+        print("程式結束。")
+        break
+    
+    # 計算空白字元數量（使用 for 迴圈）
+    blank_count = 0
+    for ch in user_input:
+        if ch == ' ':          # 判斷是否為空白字元
+            blank_count += 1
+    
+    if blank_count > 0:
+        print(f"字串中包含空白，共有 {blank_count} 個空白字元。")
+    else:
+        print("字串中沒有空白字元。")
+    
+    # 區間分析
+    if len(user_input) < 6:
+        print(f"字串長度小於 6，整個字串為：{user_input}")
+    else:
+        print(f"前三個字：{user_input[:3]}")
+        print(f"最後三個字：{user_input[-3:]}")
+    
+    # 字元極值（ASCII / Unicode 碼點）
+    if user_input:   # 避免空字串
+        max_char = max(user_input)
+        min_char = min(user_input)
+        print(f"ASCII 碼最大的字元：{max_char} (編碼 {ord(max_char)})")
+        print(f"ASCII 碼最小的字元：{min_char} (編碼 {ord(min_char)})")
+    else:
+        print("空字串無法計算極值。")
+    
+    print()  # 印出空行，讓不同輸入的結果更易閱讀
