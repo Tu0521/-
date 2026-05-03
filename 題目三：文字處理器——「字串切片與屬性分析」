@@ -1,0 +1,27 @@
+# 輸入一段文字
+mystr = input("請輸入一段文字（例如：ID2026-Python）：")
+
+# 步驟1：檢查長度是否大於5
+if len(mystr) <= 5:
+    print("資料長度不足")
+else:
+    # 步驟2：取出前兩個字元，判斷是否全部由英文字母組成
+    first_two = mystr[0:2]          # 切片取得前兩個字元
+    if first_two.isalpha():
+        print("前兩個字元全部由英文字母組成")
+    else:
+        print("前兩個字元並非全部由英文字母組成")
+
+    # 步驟3：取出最後三個字元，判斷是否包含小寫字母
+    last_three = mystr[-3:]         # 負索引切片取得最後三個字元
+    # 使用 any() 搭配產生器表達式，檢查是否存在任一個小寫字母
+    if any(ch.islower() for ch in last_three):
+        print("最後三個字元包含小寫字母")
+    else:
+        print("最後三個字元不包含小寫字母")
+
+    # 步驟4：找出 ASCII 碼最大與最小的字元
+    max_char = max(mystr)           # 字串中 Unicode 碼點最大的字元
+    min_char = min(mystr)           # 字串中 Unicode 碼點最小的字元
+    print(f"ASCII 碼最大的字元：{max_char}（編碼 {ord(max_char)}）")
+    print(f"ASCII 碼最小的字元：{min_char}（編碼 {ord(min_char)}）")
