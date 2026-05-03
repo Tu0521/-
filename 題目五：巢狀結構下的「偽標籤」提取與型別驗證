@@ -1,0 +1,31 @@
+data_matrix = [
+    ["ID_01", "12345", " "],
+    ["Admin_User", "Python3", "if"],
+    ["99Cars", " ", "Total_Sum"]
+]
+
+# 使用巢狀迴圈遍歷矩陣
+for i in range(len(data_matrix)):          # 列索引（行）
+    for j in range(len(data_matrix[i])):   # 行索引（列）
+        original = data_matrix[i][j]
+        
+        # 特殊處理：原始字串是否為「全空白」
+        if original.isspace():   # 注意：空字串 "" 會回傳 False，只有空白字元才為 True
+            print(f"空字串警告：位置 ({i}, {j}) 內容為空白字串")
+            continue   # 跳過後續處理（不進行切片與過濾）
+        
+        # 1. 長度與切片：若長度 >= 4，去掉頭尾各一字元
+        if len(original) >= 4:
+            processed = original[1:-1]   # 中間段落
+        else:
+            processed = original
+        
+        # 2. 多重屬性過濾
+        # 條件一：合法識別字
+        cond1 = processed.isidentifier()
+        # 條件二：不是全小寫 且 不是全大寫
+        cond2 = (not processed.islower()) and (not processed.isupper())
+        
+        # 兩個條件同時滿足才印出
+        if cond1 and cond2:
+            print(f"符合條件：{processed} (原始: {original})")
